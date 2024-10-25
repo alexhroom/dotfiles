@@ -1,0 +1,22 @@
+Config { font = "xft:MesloLGS NF Regular-11"
+        , borderColor = "black"
+        , border = TopB
+        , bgColor = "#222222"
+        , fgColor = "white"
+        , position = TopW L 95
+        , commands = [ Run Network "wlp2s0" ["-L","0","-H","32","--normal","green","--high","red"] 10
+                        , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
+                        , Run BatteryP ["BAT0"]
+                          ["-t", "<left>%",
+                          "-L", "10", "-H", "80", "-p", "3",
+                          "-L", "-15", "-H", "-5",
+                          "--",
+                          "-l", "red", "-m", "blue", "-h", "green",
+                          "-a", "notify-send -u critical 'Battery critically low.'",
+                          "-A", "3"] 600
+                        , Run XMonadLog
+                      ]
+        , sepChar = "%"
+        , alignSep = "}{"
+        , template = "%XMonadLog%}{%date% | %battery% |"
+        }

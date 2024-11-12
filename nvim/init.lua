@@ -3,6 +3,7 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 vim.opt.number = true
+vim.opt.wrap = false
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -32,7 +33,15 @@ require("lazy").setup({
   {'nvim-treesitter/nvim-treesitter'},
   {'gelguy/wilder.nvim'},
   {'tanvirtin/monokai.nvim'},
-  { 'junegunn/fzf.vim', dependencies = { 'junegunn/fzf' } }
+  { 'junegunn/fzf.vim', dependencies = { 'junegunn/fzf' } },
+  { 'neovim/nvim-lspconfig' }
+})
+require('lspconfig').ruff.setup({
+  init_options = {
+    settings = {
+      -- Ruff language server settings go here
+    }
+  }
 })
 
 require('monokai').setup {palette = require('monokai').pro}

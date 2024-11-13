@@ -36,13 +36,7 @@ require("lazy").setup({
   { 'junegunn/fzf.vim', dependencies = { 'junegunn/fzf' } },
   { 'neovim/nvim-lspconfig' }
 })
-require('lspconfig').ruff.setup({
-  init_options = {
-    settings = {
-      -- Ruff language server settings go here
-    }
-  }
-})
+require('lspconfig').ruff.setup({})
 
 require('monokai').setup {palette = require('monokai').pro}
 
@@ -50,7 +44,7 @@ vim.api.nvim_create_user_command('T', 'NvimTreeToggle', {})
 
 require'nvim-treesitter.configs'.setup {
     -- Modules and its options go here
-    highlight = { enable = true },
+    highlight = { enable = true, additional_vim_regex_highlighting = { "python" } },
     incremental_selection = { enable = true },
     textobjects = { enable = true },
   }

@@ -37,6 +37,7 @@ require("lazy").setup({
   { 'neovim/nvim-lspconfig' }
 })
 require('lspconfig').ruff.setup({})
+require('lspconfig').rust_analyzer.setup({})
 
 require('monokai').setup {palette = require('monokai').pro}
 

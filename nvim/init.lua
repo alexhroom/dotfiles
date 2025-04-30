@@ -33,7 +33,7 @@ require("lazy").setup({
   {'nvim-treesitter/nvim-treesitter'},
   {'gelguy/wilder.nvim'},
   {'tanvirtin/monokai.nvim'},
-  { 'junegunn/fzf.vim', dependencies = { 'junegunn/fzf' } },
+  { 'ibhagwan/fzf-lua' },
   { 'neovim/nvim-lspconfig' }
 })
 require('lspconfig').ruff.setup({})
@@ -41,7 +41,10 @@ require('lspconfig').rust_analyzer.setup({})
 
 require('monokai').setup {palette = require('monokai').pro}
 
+require('fzf-lua').setup({ 'borderless_full' })
+
 vim.api.nvim_create_user_command('T', 'NvimTreeToggle', {})
+vim.keymap.set('n', 'ca<CR>', require('fzf-lua').lsp_code_actions)
 
 require'nvim-treesitter.configs'.setup {
     -- Modules and its options go here

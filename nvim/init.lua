@@ -57,3 +57,4 @@ require'nvim-treesitter.configs'.setup {
 
 local wilder = require('wilder')
 wilder.setup({modes = {':', '/', '?'}})
+
